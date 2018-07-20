@@ -4,37 +4,21 @@ namespace raphaelbsr\material\widgets;
 
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\Menu as YiiMenu;
 
 class Menu extends YiiMenu {
 
+    public $linkTemplate = '<a class="nav-link" href="{url}">{icon} {label}</a>';
     public $dropdownIcon = '<span class="pull-right"><i class="material-icons">arrow_drop_down</i></span>';
-
-    /**
-     * @inheritdoc
-     */
-    public $labelTemplate = '{label}';
-
-    /**
-     * @inheritdoc
-     */
-    public $linkTemplate = '<a href="{url}">{icon}<span>{label}</span>{badge}</a>';
-
-    /**
-     * @inheritdoc
-     */
-    public $submenuTemplate = "\n<ul class=\"nav child_menu\">\n{items}\n</ul>\n";
-
-    /**
-     * @inheritdoc
-     */
-    public $activateParents = true;
+    public $submenuTemplate = "\n<ul class='nav tree' {show}>\n{items}\n</ul>\n";
 
     /**
      * @inheritdoc
      */
     public function init() {
-        Html::addCssClass($this->options, 'nav side-menu');
+        Html::addCssClass($this->options, 'nav');
+        Html::addCssClass($this->itemOptions, 'nav-item');
         parent::init();
     }
 
@@ -42,31 +26,24 @@ class Menu extends YiiMenu {
      * @inheritdoc
      */
     protected function renderItem($item) {
-        $renderedItem = parent::renderItem($item);
-        if (isset($item['badge'])) {
-            $badgeOptions = ArrayHelper::getValue($item, 'badgeOptions', []);
-            Html::addCssClass($badgeOptions, 'label pull-right');
-        } else {
-            $badgeOptions = null;
-        }
-        return strtr(
-                $renderedItem, [
-            '{icon}' => isset($item['icon']) ? Html::tag("i", null, ['class' => $item['icon']]) : "",
-            '{badge}' => isset($item['badge']) ? Html::tag("i", null, ['class' => $item['icon']]) : ""
-//                '{icon}' => isset($item['icon'])
-//                    ? new Icon($item['icon'], ArrayHelper::getValue($item, 'iconOptions', []))
-//                    : '',
-//                '{badge}' => (
-//                    isset($item['badge'])
-//                        ? Html::tag('small', $item['badge'], $badgeOptions)
-//                        : ''
-//                    ) . (
-//                    isset($item['items']) && count($item['items']) > 0
-//                        ? (new Icon('chevron-down'))->tag('span')
-//                        : ''
-//                    ),
-                ]
-        );
+        
+        $labelTemplate = $this->labelTemplate;
+        $linkTemplate = $this->linkTemplate;
+        $template = ArrayHelper::getValue($item, 'template', $linkTemplate);
+        $replace = !empty($item['icon']) ? [
+            '{url}' => Url::to(isset($item['url']) ? $item['url'] : '#'),
+            '{label}' => '<p>' . $item['label'] . '</p>',
+            '{icon}' => '<i class="material-icons">' . $item['icon'] . '</i> ',
+            '{dropdownicon}' => $this->dropdownIcon,
+            '{class}' => empty($item['items']) ? '' : 'tree-toggle'
+                ] : [
+            '{url}' => Url::to($item['url']),
+            '{label}' => '<p>' . $item['label'] . '</p>',
+            '{icon}' => null,
+            '{dropdownicon}' => $this->dropdownIcon,
+            '{class}' => empty($item['items']) ? '' : 'tree-toggle'
+        ];
+        return strtr($template, $replace);
     }
 
 }

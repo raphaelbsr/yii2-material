@@ -13,17 +13,16 @@ class MaterialAsset extends AssetBundle {
 
     public $sourcePath = '@vendor/raphaelbsr/yii2-material/assets';
     public $css = [
-        'https://fonts.googleapis.com/css?family=Montserrat:400,700,200',
+        'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons',
         'https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css',
-        'css/bootstrap.min.css',
-        'css/paper-dashboard.min.css',
+        'css/material-dashboard.min.css',
     ];
     public $js = [
-        'js/pooper.min.js',
-        'js/bootstrap.min.js',
-        'js/bootstrap-notify.js',
+        'js/popper.min.js',        
+        'js/bootstrap-material-design.min.js',
         'js/perfect-scrollbar.jquery.min',
-        'js/paper-dashboard.min.js',
+        'js/bootstrap-notify.js',        
+        'js/material-dashboard.min.js',     
 //        'js/material.min.js',
 //        'js/chartist.min.js',
 //        'js/superfish.js'

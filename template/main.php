@@ -12,30 +12,25 @@ MaterialAsset::register($this);
     <head>
         <meta charset="<?= Yii::$app->charset ?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
     <body>
         <?php $this->beginBody() ?>
-
         <div class="wrapper">
 
-            <div class="sidebar" data-color="white" data-active-color="danger">
+            <div class="sidebar" data-color="purple" data-background-color="purple" data-image="https://littlewoodyaz.com/wp-content/uploads/2016/10/Little-Woody-bar-crowd.jpg">
                 <!--
-                  Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+                  Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"          
+                  Tip 2: you can also add an image using data-image tag
                 -->
                 <div class="logo">
-                    <a href="#" class="simple-text logo-mini">
-                        <i class="fa fa-paper-plane"></i>
-                    </a>
                     <a href="#" class="simple-text logo-normal">
-                        i9 Comandas
-                        <!-- <div class="logo-image-big">
-                          <img src="../assets/img/logo-big.png">
-                        </div> -->
-                    </a>
+                        <i class="fa fa-paper-plane"></i>
+                        i9 Comandas 
+                    </a>                    
                 </div>
 
                 <div class="sidebar-wrapper">
@@ -43,173 +38,125 @@ MaterialAsset::register($this);
                     Menu::widget(
                             [
                                 "items" => [
-                                    ['label' => 'Início', 'icon' => 'nc-icon nc-bank', 'url' => ['/site/index']],
-                                    ['label' => 'Grupos de Produto', 'url' => ['/competencia/index'], 'icon' => 'nc-icon nc-bank',],
-                                    ['label' => 'Produtos', 'url' => ['/competencia/index'], 'icon' => 'nc-icon nc-bank',],
+                                    [
+                                        'label' => 'Dashboard',
+                                        'icon' => 'dashboard',
+                                        'url' => ['/site/index'],
+                                    ],
                                 ]
                     ]);
-                    ?>
-                </div>
-
-                <div class="sidebar-wrapper" style="display: none">
-                    <ul class="nav">
-                        <li class="active ">
-                            <a href="./dashboard.html">
-                                <i class="nc-icon nc-bank"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./icons.html">
-                                <i class="nc-icon nc-diamond"></i>
-                                <p>Icons</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./map.html">
-                                <i class="nc-icon nc-pin-3"></i>
-                                <p>Maps</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./notifications.html">
-                                <i class="nc-icon nc-bell-55"></i>
-                                <p>Notifications</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./user.html">
-                                <i class="nc-icon nc-single-02"></i>
-                                <p>User Profile</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./tables.html">
-                                <i class="nc-icon nc-tile-56"></i>
-                                <p>Table List</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./typography.html">
-                                <i class="nc-icon nc-caps-small"></i>
-                                <p>Typography</p>
-                            </a>
-                        </li>
-                        <li class="active-pro">
-                            <a href="./upgrade.html">
-                                <i class="nc-icon nc-spaceship"></i>
-                                <p>Upgrade to PRO</p>
-                            </a>
-                        </li>
-                    </ul>
+                    ?>                    
                 </div>
             </div>
 
             <div class="main-panel">
                 <!-- Navbar -->
-                <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+                <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top" >
                     <div class="container-fluid">
-                        <div class="navbar-wrapper">
-                            <div class="navbar-toggle">
-                                <button type="button" class="navbar-toggler">
-                                    <span class="navbar-toggler-bar bar1"></span>
-                                    <span class="navbar-toggler-bar bar2"></span>
-                                    <span class="navbar-toggler-bar bar3"></span>
-                                </button>
-                            </div>
-                            <a class="navbar-brand" href="#"><?= Html::encode($this->title) ?></a>
-                        </div>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-bar navbar-kebab"></span>
-                            <span class="navbar-toggler-bar navbar-kebab"></span>
-                            <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <div class="navbar-wrapper">                            
+                            <a class="navbar-brand" href="#pablo"><?= Html::encode($this->title) ?></a>
+                        </div>   
+
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
                         </button>
-                        <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                            <form>
-                                <div class="input-group no-border">
+
+                        <div class="collapse navbar-collapse justify-content-end">
+                            <form class="navbar-form">
+                                <div class="tut-group no-border">
                                     <input type="text" value="" class="form-control" placeholder="Search...">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <i class="nc-icon nc-zoom-split"></i>
-                                        </div>
-                                    </div>
+                                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                        <i class="material-icons">search</i>
+                                        <div class="ripple-container"></div>
+                                    </button>
                                 </div>
                             </form>
+
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link btn-magnify" href="#pablo">
-                                        <i class="nc-icon nc-layout-11"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Stats</span>
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="material-icons">dashboard</i>
+                                        <p class="d-lg-none d-md-block">
+                                            Stats
                                         </p>
                                     </a>
                                 </li>
-                                <li class="nav-item btn-rotate dropdown">
-                                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="nc-icon nc-bell-55"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Some Actions</span>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">notifications</i>
+                                        <span class="notification">5</span>
+                                        <p class="d-lg-none d-md-block">
+                                            Some Actions
                                         </p>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <a class="dropdown-item" href="#">Mike John responded to your email</a>
+                                        <a class="dropdown-item" href="#">You have 5 new tasks</a>
+                                        <a class="dropdown-item" href="#">You're now friend with Andrew</a>
+                                        <a class="dropdown-item" href="#">Another Notification</a>
+                                        <a class="dropdown-item" href="#">Another One</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link btn-rotate" href="#pablo">
-                                        <i class="nc-icon nc-settings-gear-65"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Account</span>
+                                    <a class="nav-link" href="#pablo">
+                                        <i class="material-icons">person</i>
+                                        <p class="d-lg-none d-md-block">
+                                            Account
                                         </p>
                                     </a>
                                 </li>
                             </ul>
+
                         </div>
                     </div>
                 </nav>
-                <!-- End Navbar -->
-                <!-- <div class="panel-header panel-header-lg">
-            
-            <canvas id="bigDashboardChart"></canvas>
-            
-            
-          </div> -->
+                <!-- End Navbar -->                    
                 <div class="content">
-
-                    <?= $content ?>
-                </div>
-                <footer class="footer footer-black  footer-white ">
                     <div class="container-fluid">
-                        <div class="row">
-                            <nav class="footer-nav">
-                                <ul>
-                                    <li>
-                                        <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
-                                    </li>
-                                    <li>
-                                        <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <div class="credits ml-auto">
-                                <span class="copyright">
-                                    ©
-                                    <script>
-                                        document.write(new Date().getFullYear())
-                                    </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
-                                </span>
-                            </div>
+                        <?= $content ?>
+                    </div>
+                </div>
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <nav class="float-left">
+                            <ul>
+                                <li>
+                                    <a href="https://www.creative-tim.com">
+                                        Creative Tim
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://creative-tim.com/presentation">
+                                        About Us
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://blog.creative-tim.com">
+                                        Blog
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.creative-tim.com/license">
+                                        Licenses
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="copyright float-right">
+                            &copy;
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script>, made with <i class="material-icons">favorite</i> by
+                            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
                         </div>
                     </div>
                 </footer>
-            </div>
+            </div>            
+            <?php $this->endBody() ?>
         </div>
-        <?php $this->endBody() ?>
     </body>
 
 </html>
